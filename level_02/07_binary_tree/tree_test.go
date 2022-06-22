@@ -1,4 +1,4 @@
-package level_02
+package _7_binary_tree
 
 import (
 	"testing"
@@ -6,15 +6,15 @@ import (
 
 func TestTreeNode_pre(t *testing.T) {
 	head := generateTree()
-	head.pre()
+	head.preRec()
 }
 
 func TestTreeNode_in(t *testing.T) {
 	head := generateTree()
-	head.in()
+	head.inRec()
 }
 
 func TestTreeNode_pos(t *testing.T) {
 	head := generateTree()
-	head.pos()
+	head.posRec()
 }

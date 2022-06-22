@@ -1,4 +1,4 @@
-package level_02
+package _7_binary_tree
 
 import (
 	"fmt"
@@ -26,43 +26,43 @@ type TreeNode struct {
 // 构造二叉树
 func generateTree() *TreeNode {
 	head := &TreeNode{Value: 1}
-	head.Left = &TreeNode{Value: 3}
-	head.Right = &TreeNode{Value: 4}
-	head.Left.Left = &TreeNode{Value: 2}
+	head.Left = &TreeNode{Value: 2}
+	head.Right = &TreeNode{Value: 3}
+	head.Left.Left = &TreeNode{Value: 4}
 	head.Left.Right = &TreeNode{Value: 5}
-	head.Right.Left = &TreeNode{Value: 3}
+	head.Right.Left = &TreeNode{Value: 6}
 	head.Right.Right = &TreeNode{Value: 7}
 	return head
 }
 
-// 先序
-func (head *TreeNode) pre() {
+// 先序 -- 递归
+func (head *TreeNode) preRec() {
 	if head == nil {
 		return
 	}
 	fmt.Println(head.Value)
-	head.Left.pre()
-	head.Right.pre()
+	head.Left.preRec()
+	head.Right.preRec()
 }
 
-// 中序
-func (head *TreeNode) in() {
+// 中序 -- 递归
+func (head *TreeNode) inRec() {
 	if head == nil {
 		return
 	}
-	head.Left.in()
+	head.Left.inRec()
 	fmt.Println(head.Value)
-	head.Right.in()
+	head.Right.inRec()
 }
 
-// 后序
-func (head *TreeNode) pos() {
+// 后序 -- 递归
+func (head *TreeNode) posRec() {
 	if head == nil {
 		return
 	}
-	head.Left.pos()
-	head.Right.pos()
+	head.Left.posRec()
+	head.Right.posRec()
 	fmt.Println(head.Value)
 }
 
-// 宽度优先遍历 [tips: 用队列结构]
+
