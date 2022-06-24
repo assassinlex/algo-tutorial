@@ -5,18 +5,10 @@ import (
 	"sync/atomic"
 )
 
-type queue interface {
-	Head() int64
-	Tail() int64
-	Push(v int64)
-	Pop() int64
-	Len() int64
-	Empty() bool
-}
-
+// Queue 队列
 type Queue struct {
-	head *list.Node
-	tail *list.Node
+	head   *list.Node
+	tail   *list.Node
 	length int64
 }
 
@@ -82,4 +74,3 @@ func NewQueue(s []int64) *Queue {
 
 	return q
 }
-

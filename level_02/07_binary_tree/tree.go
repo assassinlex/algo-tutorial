@@ -15,15 +15,20 @@ import (
 
 	后序: 任何子树的处理顺序都是. 先左子树、再又子树、后头结点
 
- */
+*/
 
 type TreeNode struct {
-	Value int
-	Left *TreeNode
+	Value int64
+	Left  *TreeNode
 	Right *TreeNode
 }
 
-// 构造二叉树
+/**
+ * 构造二叉树
+ *           1
+ *       2       3
+ *     4   5   6   7
+ */
 func generateTree() *TreeNode {
 	head := &TreeNode{Value: 1}
 	head.Left = &TreeNode{Value: 2}
@@ -65,4 +70,17 @@ func (head *TreeNode) posRec() {
 	fmt.Println(head.Value)
 }
 
-
+// 先序 -- 压栈
+func (head *TreeNode) preByStack() {
+	//s := stack.NewStack([]*list.Node{})
+	//s.Push(head.Value)
+	//for !s.Empty() {
+	//	fmt.Println(s.Pop())
+	//	if head.Right != nil {
+	//		s.Push(head.Right.Value)
+	//	}
+	//	if head.Left != nil {
+	//		s.Push(head.Left.Value)
+	//	}
+	//}
+}
