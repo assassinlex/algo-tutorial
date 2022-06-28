@@ -31,3 +31,18 @@ func TestTreeNode_posStack(t *testing.T) {
 	head := generateTree()
 	posByStack(head)
 }
+
+func TestBFS_bfs(t *testing.T) {
+	head := generateTree()
+	bfs(head)
+}
+
+func TestBFS_GetTreeMaxWidthWithMap(t *testing.T) {
+	head := generateTree()
+	t.Log(GetTreeMaxWidthWithMap(head))
+}
+
+func TestBFS_GetTreeMaxWidthWithoutMap(t *testing.T) {
+	head := generateTree()
+	t.Log(GetTreeMaxWidthWithoutMap(head))
+}
