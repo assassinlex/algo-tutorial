@@ -1,11 +1,14 @@
 package _2_list
 
-// Node 节点类型
 type Node interface {
 	Prev() Node
+	SetPrev(Node)
 	Next() Node
-	SetPrev(n Node)
-	SetNext(n Node)
+	SetNext(Node)
+	Left() Node
+	SetLeft(Node)
+	Right() Node
+	SetRight(Node)
 	Value() int64
 }
 
@@ -36,6 +39,25 @@ func (l *ListNode) SetNext(node Node) {
 	l.next = node
 }
 
+func (l *ListNode) Left() Node {
+	//TODO implement me
+	return nil
+}
+
+func (l *ListNode) Right() Node {
+	//TODO implement me
+	return nil
+}
+
+func (l *ListNode) SetLeft(node Node) {
+	//TODO implement me
+}
+
+func (l *ListNode) SetRight(node Node) {
+	//TODO implement me
+}
+
+// NewListNode 初始化节点
 func NewListNode(v int64) *ListNode {
 	return &ListNode{
 		value: v,
@@ -44,36 +66,32 @@ func NewListNode(v int64) *ListNode {
 	}
 }
 
+// TreeNode 树型节点
 type TreeNode struct {
-	value int64
-	Left  *TreeNode
-	Right *TreeNode
+	*ListNode
+	left  Node
+	right Node
 }
 
-func (t *TreeNode) Prev() Node {
-	panic("implement me")
+func (t *TreeNode) SetLeft(node Node) {
+	t.left = node
 }
 
-func (t *TreeNode) Next() Node {
-	panic("implement me")
+func (t *TreeNode) SetRight(node Node) {
+	t.right = node
 }
 
-func (t *TreeNode) SetPrev(n Node) {
-	panic("implement me")
+func (t *TreeNode) Left() Node {
+	return t.left
 }
 
-func (t *TreeNode) SetNext(n Node) {
-	panic("implement me")
+func (t *TreeNode) Right() Node {
+	return t.right
 }
 
-func (t *TreeNode) Value() int64 {
-	return t.value
-}
-
+// NewTreeNode 构造树型节点
 func NewTreeNode(v int64) *TreeNode {
 	return &TreeNode{
-		value: v,
-		Left:  nil,
-		Right: nil,
+		ListNode: &ListNode{value: v},
 	}
 }

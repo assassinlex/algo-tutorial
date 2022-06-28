@@ -12,7 +12,6 @@ type List interface {
 // DoubleLinkList 双向链表
 type DoubleLinkList struct {
 	head   Node
-	cur    Node
 	tail   Node
 	length int64
 }
@@ -35,8 +34,8 @@ func (d *DoubleLinkList) Len() int64 {
 // PushFromHead  从头部添加元素
 func (d *DoubleLinkList) PushFromHead(node Node) {
 	if d.head == nil {
-		d.head, d.cur, d.tail = node, node, node
-		atomic.AddInt64(&d.length, 1)
+		d.head, d.tail = node, node
+		atomic.AddInt64(&(d.length), 1)
 		return
 	}
 	d.head.SetPrev(node)
@@ -48,7 +47,7 @@ func (d *DoubleLinkList) PushFromHead(node Node) {
 // PushFromTail 从尾部添加元素
 func (d *DoubleLinkList) PushFromTail(node Node) {
 	if d.tail == nil {
-		d.head, d.cur, d.tail = node, node, node
+		d.head, d.tail = node, node
 		atomic.AddInt64(&d.length, 1)
 		return
 	}
@@ -67,7 +66,7 @@ func (d *DoubleLinkList) PopFromHead() Node {
 
 	if d.Len() == 1 {
 		d.head, d.tail = nil, nil
-		atomic.AddInt64(&d.length, -1)
+		atomic.AddInt64(&(d.length), -1)
 		return head
 	}
 
@@ -103,5 +102,4 @@ func (d *DoubleLinkList) PopFromTail() Node {
 // NewDoubleLinkList 构造双向链表
 func NewDoubleLinkList() *DoubleLinkList {
 	return &DoubleLinkList{}
-
 }
