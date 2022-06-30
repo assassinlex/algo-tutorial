@@ -1,6 +1,9 @@
 package _7_binary_tree
 
-import "testing"
+import (
+	list "algo/level_02/02_list"
+	"testing"
+)
 
 func TestTreeNode_pre(t *testing.T) {
 	tree := generateTree()
@@ -45,4 +48,30 @@ func TestBFS_GetTreeMaxWidthWithMap(t *testing.T) {
 func TestBFS_GetTreeMaxWidthWithoutMap(t *testing.T) {
 	head := generateTree()
 	t.Log(GetTreeMaxWidthWithoutMap(head))
+}
+
+/**
+ * 两种类型的二叉树
+ *         1          1
+ *      2                 3
+ *         5          6
+ */
+func TestSerialize_PreSerialize(t *testing.T) {
+	tree := list.NewTreeNode(1)
+	tree.SetLeft(list.NewTreeNode(2))
+	tree.Left().SetRight(list.NewTreeNode(5))
+	s := PreSerialize(tree)
+	t.Log(s)
+	for i := 0; i < len(s); i++ {
+		t.Log(s[i])
+	}
+
+	tree = list.NewTreeNode(1)
+	tree.SetRight(list.NewTreeNode(3))
+	tree.Right().SetLeft(list.NewTreeNode(6))
+	s = PreSerialize(tree)
+	t.Log(s)
+	for i := 0; i < len(s); i++ {
+		t.Log(s[i])
+	}
 }
