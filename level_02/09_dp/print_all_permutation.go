@@ -40,3 +40,35 @@ func f1(chars []byte, i int, ans []string) []string {
 	}
 	return ans
 }
+
+func permutation02(str string) []string {
+	var ans []string
+	if len(str) == 0 {
+		return ans
+	}
+	return f2([]byte(str), 0, ans)
+}
+
+// f2
+// 问题: 获取一个字符串的全部排列, 且不能出现重复排列 [分支限界]
+//
+// 注意: 此处虽然是用 set 进行去重, 但是与子序列的去重稍显不同,
+//      子序列是将所有的支路都处理完了之后, 将结果存入 set, 利用 set 的特性自动去重
+//      分支限界是某种情况发生后, 后序的一系列相关操作都不进行,
+//      在这个例子中表达为 i 位置出现了某个字符后, 后续的这个字符再次出现在这个位置上的后序可能结果一概不要
+func f2(chars []byte, i int, ans []string) []string {
+	length := len(chars)
+	if i == length {
+		ans = append(ans, string(chars))
+	}
+	alloc := make([]bool, 256) // 构造字符的分配记录, 利用字符对应的 ascii 在数组中的 bool 值作为依据
+	for j := i; j < length; j++ {
+		if !alloc[chars[j]] { // 只有 j 位置的字符未被分配过, 才进行排列组合
+			alloc[chars[j]] = true
+			chars[j], chars[i] = chars[i], chars[j]
+			ans = f2(chars, i+1, ans)
+			chars[j], chars[i] = chars[i], chars[j]
+		}
+	}
+	return ans
+}
