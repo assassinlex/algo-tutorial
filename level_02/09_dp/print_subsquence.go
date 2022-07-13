@@ -40,7 +40,7 @@ func SubsNoRepeat(str string) set.MySet {
 }
 
 // process02
-// 问题: 获取一个字符串的全部子序列, 且不能出现重复子序列
+// 问题: 获取一个字符串的全部子序列, 且不能出现重复子序列 [即用 set 存储代替 slice 存储]
 func process02(chars []byte, i int, ans set.MySet, path string) set.MySet {
 	if i == len(chars) { // 已经处理完全, 将当前决定产生的结果放入结果结合
 		ans.Add(path)
