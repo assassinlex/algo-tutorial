@@ -6,10 +6,11 @@ import (
 )
 
 func TestPrintInt32BinaryString(t *testing.T) {
-	data := []int32 {
-		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-		12345, 234344, 555555, 664564,
-		1234567890,
+	data := []int32{
+		//1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+		//12345, 234344, 555555, 664564,
+		//1234567890,
+		-2,
 	}
 
 	for _, num := range data {
@@ -19,7 +20,7 @@ func TestPrintInt32BinaryString(t *testing.T) {
 }
 
 func TestGetInt32BinaryNegative(t *testing.T) {
-	data := []int32 {
+	data := []int32{
 		1, 2, 3, 4, 5, -1, -2, -3, -4, -5,
 		12345, 234344, 555555, 664564,
 		-12345, -234344, -555555, -664564,
@@ -31,8 +32,8 @@ func TestGetInt32BinaryNegative(t *testing.T) {
 	}
 }
 
-func TestGetFactorialNSum(t *testing.T)  {
-	data := []int64 {
+func TestGetFactorialNSum(t *testing.T) {
+	data := []int64{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 	}
 
