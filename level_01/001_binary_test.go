@@ -19,6 +19,21 @@ func TestPrintInt32BinaryString(t *testing.T) {
 	}
 }
 
+func TestPrintInt64BinaryString(t *testing.T) {
+	data := []int64{
+		//1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+		//12345, 234344, 555555, 664564,
+		//1234567890,
+		//-2,
+		6959789128066011136,
+	}
+
+	for _, num := range data {
+		printInt64BinaryString(num)
+		log.Println()
+	}
+}
+
 func TestGetInt32BinaryNegative(t *testing.T) {
 	data := []int32{
 		1, 2, 3, 4, 5, -1, -2, -3, -4, -5,

@@ -20,6 +20,20 @@ func printInt32BinaryString(num int32) {
 
 }
 
+func printInt64BinaryString(num int64) {
+
+	for i := 63; i >= 0; i-- {
+		s := 1
+		if (num & (1 << int64(i))) == 0 {
+			s = 0
+		}
+		fmt.Print(s)
+	}
+
+	fmt.Print("\t")
+
+}
+
 // getInt32BinaryNegative 获取一个整型的相反数
 func getInt32BinaryNegative(num int32) int32 {
 	return ^num + 1
